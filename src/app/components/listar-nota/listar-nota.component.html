@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">LISTADO DE NOTAS</span>
+            <button class="btn btn-success float-end" routerLink="/crear-nota" >NUEVO</button>
+            <table class="table table-striped mt-3">
+              <thead>
+                <tr>
+                  <th scope="col">Título</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Fecha de inicio</th>
+                  <th scope="col">Fecha de vencimiento</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let nota of notas$ | async">
+                  <td>{{ nota.titulo }}</td>
+                  <td>{{ nota.descripcion }}</td>
+                  <td>{{ nota.fechaInicio }}</td>
+                  <td>{{ nota.fechaVencimiento }}</td>
+                  <td>
+                    <i (click)="seleccionarNotaParaModificar(nota)" class="fas fa-edit text-primary"></i>
+                    <i (click)="eliminarNota(nota)" class="fas fa-trash text-danger"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

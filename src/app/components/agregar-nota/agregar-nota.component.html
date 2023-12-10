@@ -1,0 +1,42 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">AGREGAR NOTA</span>
+            <form [formGroup]="notaForm" (ngSubmit)="agregarNota()">
+              <div class="mb-3">
+                <input type="text" formControlName="titulo" class="form-control form-control-lg" placeholder="Título">
+                <div class="text-danger" *ngIf="notaForm.get('titulo')?.hasError('required') && notaForm.get('titulo')?.touched">
+                  <span>El título de la nota es obligatorio</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <textarea formControlName="descripcion" class="form-control form-control-lg" placeholder="Descripción"></textarea>
+                <div class="text-danger" *ngIf="notaForm.get('descripcion')?.hasError('required') && notaForm.get('descripcion')?.touched">
+                  <span>La descripción de la nota es obligatoria</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="date" formControlName="fechaInicio" class="form-control form-control-lg" placeholder="Fecha de inicio">
+                <div class="text-danger" *ngIf="notaForm.get('fechaInicio')?.hasError('required') && notaForm.get('fechaInicio')?.touched">
+                  <span>La fecha de inicio de la nota es obligatoria</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="date" formControlName="fechaVencimiento" class="form-control form-control-lg" placeholder="Fecha de vencimiento">
+                <div class="text-danger" *ngIf="notaForm.get('fechaVencimiento')?.hasError('required') && notaForm.get('fechaVencimiento')?.touched">
+                  <span>La fecha de vencimiento de la nota es obligatoria</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button routerLink='/notas' class="btn btn-secondary btn-lg float-start">CANCELAR</button>
+                <button type="submit" [disabled]="notaForm.invalid" class="btn btn-success btn-lg float-end">AGREGAR NOTA</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
